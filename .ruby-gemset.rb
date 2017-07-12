@@ -1,1 +1,1 @@
-menu
+my_new_project
