@@ -1,2 +1,14 @@
-<h1>User#index</h1>
-<p>Find me in app/views/user/index.html.erb</p>
+.container
+  h3 Current Users
+  .add-user-link = link_to "Add User", new_user_path
+  table.users-list
+    thead
+      tr
+        th Name
+        th
+    tbody
+    - @users.each do |user|
+        td = user.name
+        td 
+        = form_for :user, edit_user_path do |f|
+            = f.submit "Edit User"
