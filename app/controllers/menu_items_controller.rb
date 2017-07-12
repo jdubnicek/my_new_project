@@ -8,7 +8,7 @@ class MenuItemsController < ApplicationController
   end
 
   def create
-    @menu_item = MenuItem.new(params)
+    @menu_item = MenuItem.new(menu_item_params)
     if @user.save
       redirect_to menu_items_path
     else
@@ -17,24 +17,24 @@ class MenuItemsController < ApplicationController
   end
 
   def edit
-    @menu_item = MenuItem.find_by_id(params[:id])
+    @menu_item = MenuItem.find(params[:id])
   end
 
   def update
-    @menu_item = MenuItem.find_by_id(params[:id])
+    @menu_item = MenuItem.find(params[:id])
     if @menu_item.update
       redirect_to menu_item_path
     else
-      render :index******
+      render :edit
     end
   end
 
   def destroy
-    @menu_item = MenuItem.find_by_id(params[:id])
+    @menu_item = MenuItem.find(params[:id])
     if @menu_item.delete
       redirect_to menu_items_path
     else
-      render :index****
+      render :edit
     end
   end
 
