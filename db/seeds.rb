@@ -10,27 +10,50 @@ users = [["Jack Dubnicek", "jdubnicek@gmail.com"],
               ["Noel Rappin", "noel@tablexi.com"],
               ["Table XI User", "contact@tablexi.com"]]
 
-cart_id = Cart.create!(user_id)
-
 users.each do |user|
   User.create!({name: admin[0],
-                email: admin[1],
-                cart_id: " "})
+                email: admin[1]})
   puts "User #{user[0]} #{user[1]} has been created"
 end
 
 
 puts "Creating Categories"
-categories = []
+categories = [appetizer, main_course, side_dish, dessert]
 
 categories.each do |category|
-
+  Category.create!({name: category})
+  puts "Category #{category} has been created"
 end
 
 
 puts "Creating Menu Items"
-items = [[],[],[],[]]
+menu_items = [
+  appetizer =   [["Bruschetta", "Toasted French Bread topped with tomatoes and basil", "3.99" ],
+                  ["Caesar Salad", "Romaine lettuce, parmesan cheese, croutons, Caesar dressing", "3.99"],
+                  ["Soup du Jour", "A cup of our soup of the day", price: "1.99"],
+                  ["Shrimp Cocktail", "Delicious fresh shrimp with a horseradish cocktail sauce", "4.99"]],
 
-items.each do |item|
+  main_course = [["Rotisserie Chicken", "Juicy rotisserie roasted half chicken", "9.99", ],
+                  ["NY Strip", "Seared NY Strip Steak", "16.99"],
+                  ["Chicken Fettucine Alfredo", "Grilled chicken in an alfredo sauce over fettucine noodles", "12.99"],
+                  ["Seafood Gumbo", "Shrimp, oysters, and crabmeat in a spicy vegetable broth", "19.99"]],
 
+  side_dish =  [["Spicy Sweet Corn", "Roasted sweet corn with diced sweet peppers", "1.49"],
+                  ["Roasted Brussels Sprouts", "Roasted brussels sprouts with crispy pancetta", "1.49"],
+                  ["Garlic Mashed Potatoes", "Thick garlic mashed potatoes topped with chives", "1.49"],
+                  ["Glazed Baby Carrots", "Baby carrots glazed in honey with ginger", "1.49"]],
+
+  dessert =     [["Fruit Parfait", "Layers of fresh fruit, yogurt, and granola", "4.99"],
+                  ["Flan", "Delicious custard topped with a sugary crispy shell", "4.99"],
+                  ["Salted Caramel Cake", "Sweet and salty layered caramel cake", "4.99"],
+                  ["Gelato", "Assorted flavors", "1.99"]]
+]
+menu_items.each do |item|
+  MenuItem.create!({name: item,
+                    description: ,
+                    category: item,
+                    price: })
+  puts "Menu Item #{item} has been created"
 end
+
+puts "Creating Shopping Carts"
